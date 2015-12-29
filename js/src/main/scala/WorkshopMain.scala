@@ -13,6 +13,7 @@ import org.scalajs.dom.raw.Event
 import org.scalajs.dom.raw.Node
 import org.scalajs.dom.raw.HTMLElement
 import org.scalajs.dom.html.Table
+import org.scalajs.dom.html.Input
 
 @JSExport
 object WorkshopMain {
@@ -35,12 +36,15 @@ object WorkshopMain {
 
   @dom
   def page = {
-    val data: Var[String] = Var("initial data")
+    val tags: Vars[String] = Vars("tag1", "tag2-from-server-side")
     <section>
-      { data.each }
-      <button onclick={ event: Event => data := "Modified" }>Modify data</button>
-      <h3>Header 3</h3>
-      { table(data.each).each }
+      <hr/>
+      {
+        tagPicker(tags).each
+      }
+      <button onclick={ event:Event =>
+        println(tags.get)
+      }>Submit</button>
     </section>
   }
 
@@ -49,4 +53,31 @@ object WorkshopMain {
     import org.scalajs.dom.document
     dom.render(document.body, page)
   }
+
+  @dom
+  def tagPicker(tags: Vars[String]): Binding[Node] = {
+    val input: Input = <input/>;
+    <section>
+      <div>
+        {
+          for (tag <- tags) yield {
+            <q>
+              { tag }
+            	<button onclick={ event: Event =>
+            	  tags.get -= tag
+            	}>x</button>
+						</q>
+          }
+        }
+      </div>
+      { input }
+      <button onclick={ event: Event =>
+        if (input.value != "" && !tags.get.contains(input.value)) {
+          tags.get += input.value
+          input.value = ""
+        }
+      }>Add</button>
+    </section>
+  }
+
 }
