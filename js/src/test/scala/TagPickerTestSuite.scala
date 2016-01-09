@@ -1,7 +1,7 @@
 import utest._
 import org.scalajs.dom.document
-import au.com.realcommercial.binding.dom
-import au.com.realcommercial.binding.Binding.Vars
+import com.thoughtworks.binding.dom
+import com.thoughtworks.binding.Binding.Vars
 import org.scalajs.dom.html.Quote
 import org.scalajs.dom.html.Button
 

@@ -1,13 +1,13 @@
 import scala.scalajs.js.annotation.JSExport
 
-import au.com.realcommercial.binding.Binding
-import au.com.realcommercial.binding.dom
+import com.thoughtworks.binding.Binding
+import com.thoughtworks.binding.dom
 
-import au.com.realcommercial.binding.Binding._
+import com.thoughtworks.binding.Binding._
 
-import au.com.realcommercial.binding.Binding.Var
-import au.com.realcommercial.binding.Binding.Vars
-import au.com.realcommercial.binding.Binding.BindingSeq
+import com.thoughtworks.binding.Binding.Var
+import com.thoughtworks.binding.Binding.Vars
+import com.thoughtworks.binding.Binding.BindingSeq
 
 import org.scalajs.dom.raw.Event
 import org.scalajs.dom.raw.Node
